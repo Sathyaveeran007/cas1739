@@ -1,0 +1,5 @@
+bird(sparrow).
+bird(penguin).
+
+can_fly(X) :- bird(X), \+ flightless(X).
+flightless(penguin).
