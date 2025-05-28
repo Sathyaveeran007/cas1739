@@ -1,0 +1,3 @@
+disease(flu) :- symptom(fever), symptom(cough).
+symptom(fever).
+symptom(cough).
