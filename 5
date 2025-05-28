@@ -1,0 +1,33 @@
+def is_valid(m, c):
+    return m >= 0 and c >= 0 and m <= 3 and c <= 3 and (m == 0 or m >= c)
+
+def successors(state):
+    m, c, boat = state
+    ops = [(1,0), (2,0), (0,1), (0,2), (1,1)]
+    next_states = []
+    for dm, dc in ops:
+        if boat == 1:
+            new_state = (m - dm, c - dc, 0)
+        else:
+            new_state = (m + dm, c + dc, 1)
+        if is_valid(new_state[0], new_state[1]) and is_valid(3 - new_state[0], 3 - new_state[1]):
+            next_states.append(new_state)
+    return next_states
+
+def bfs():
+    start = (3, 3, 1)
+    goal = (0, 0, 0)
+    queue = [(start, [start])]
+    visited = set()
+    while queue:
+        (state, path) = queue.pop(0)
+        if state in visited:
+            continue
+        visited.add(state)
+        if state == goal:
+            return path
+        for s in successors(state):
+            queue.append((s, path + [s]))
+
+for step in bfs():
+    print(step)
