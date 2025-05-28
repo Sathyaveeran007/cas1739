@@ -1,0 +1,4 @@
+% Pattern matching using sublist check
+pattern_match(Pattern, List) :-
+    append(_, Rest, List),
+    append(Pattern, _, Rest).
