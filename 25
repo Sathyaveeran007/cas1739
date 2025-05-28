@@ -1,0 +1,8 @@
+can_reach(banana) :-
+    on_box,
+    push(box),
+    climb(box).
+
+on_box.
+push(box).
+climb(box).
