@@ -1,0 +1,20 @@
+% Define vowels
+is_vowel(a).
+is_vowel(e).
+is_vowel(i).
+is_vowel(o).
+is_vowel(u).
+
+% Base case
+count_vowels([], 0).
+
+% Count when head is vowel
+count_vowels([H|T], Count) :-
+    is_vowel(H),
+    count_vowels(T, Rest),
+    Count is Rest + 1.
+
+% Skip when head is not vowel
+count_vowels([H|T], Count) :-
+    \+ is_vowel(H),
+    count_vowels(T, Count).
