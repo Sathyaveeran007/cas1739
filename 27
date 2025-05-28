@@ -1,0 +1,12 @@
+edge(a, b, 1).
+edge(a, c, 3).
+edge(b, d, 1).
+edge(c, d, 1).
+
+best_first(Start, Goal) :- path(Start, Goal, [Start]).
+
+path(Node, Node, Path) :- write('Path: '), write(Path), nl.
+path(Node, Goal, Visited) :-
+    edge(Node, Next, _),
+    \+ member(Next, Visited),
+    path(Next, Goal, [Next|Visited]).
