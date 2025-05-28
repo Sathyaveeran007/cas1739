@@ -1,0 +1,9 @@
+def vacuum_cleaner(state):
+    for room in state:
+        if state[room] == "dirty":
+            print(f"Cleaning {room}")
+            state[room] = "clean"
+    return state
+
+initial_state = {"A": "dirty", "B": "clean"}
+print(vacuum_cleaner(initial_state))
