@@ -1,0 +1,16 @@
+def is_safe(board, row, col):
+    for i in range(row):
+        if board[i] == col or abs(board[i]-col) == row-i:
+            return False
+    return True
+
+def solve_nq(row, board):
+    if row == 8:
+        print(board)
+        return
+    for col in range(8):
+        if is_safe(board, row, col):
+            board[row] = col
+            solve_nq(row + 1, board)
+
+solve_nq(0, [-1]*8)
